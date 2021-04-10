@@ -4,7 +4,7 @@ let add = document.querySelector('.add')
 
 function adicionar(valor1, valor2){
    div = document.createElement('div')
-   div.innerHTML = '<div>' + valor1 + '</div>' + '<div>' + valor2 + '</div>' + "<div class=remover><button>X</button></div>"
+   div.innerHTML = '<div>' + valor1 + '</div>' + '<div>' + valor2 + '</div>' + "<div class=editar><button>editar</button></div>" + "<div class=remover><button>X</button></div>"
    div.classList.add('descricao')
    tabela.appendChild(div)
 
@@ -27,8 +27,8 @@ add.addEventListener('click', receberValue)
 /* remover tabela*/
 
 setInterval(()=>{
-    remover = document.querySelectorAll('.remover') 
-    console.log(remover)
+   let remover = document.querySelectorAll('.remover') 
+   let editar = document.querySelectorAll('.editar') 
 
     function apagar(){
         node = this.parentNode
@@ -37,6 +37,19 @@ setInterval(()=>{
     
     remover.forEach(e =>{
         e.addEventListener('click', apagar)
+    })
+
+    function mudar(){
+       nome = prompt("Qual nome deseja colocar?")
+       idade = prompt("Qual idade deseja colocar?")
+
+       nonde2 = this.parentNode
+       nonde2.children[0].innerHTML = nome;
+       nonde2.children[1].innerHTML = idade;
+    }
+
+    editar.forEach(e =>{
+        e.addEventListener('click', mudar)
     })
     
 },1000)
