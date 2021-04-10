@@ -18,6 +18,9 @@ function receberValue(){
         idade = inputs[1].value
 
         adicionar(nome,idade)
+        
+        inputs[0].value = ''
+        inputs[1].value = ''
     }
 }
 
@@ -42,10 +45,13 @@ setInterval(()=>{
     function mudar(){
        nome = prompt("Qual nome deseja colocar?")
        idade = prompt("Qual idade deseja colocar?")
-
-       nonde2 = this.parentNode
-       nonde2.children[0].innerHTML = nome;
-       nonde2.children[1].innerHTML = idade;
+       if(nome === '' || idade === ''){
+           alert('PRENCHA OS DADOS DE EDIÇÃO')
+       }else{
+            nonde2 = this.parentNode
+            nonde2.children[0].innerHTML = nome;
+            nonde2.children[1].innerHTML = idade;
+       }
     }
 
     editar.forEach(e =>{
